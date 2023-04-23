@@ -32,11 +32,10 @@ import java.util.Map;
 public class Register extends AppCompatActivity {
 
 
-public  static  final String TAG = "TAG";
+    public static final String TAG = "TAG";
 
 
-
-    EditText mFullName, mEmail,mPassword,mPhone;
+    EditText mFullName, mEmail, mPassword, mPhone;
     Button mRegisterBtn;
     TextView mLoginBtn;
     ProgressBar progressBar;
@@ -64,12 +63,10 @@ public  static  final String TAG = "TAG";
         fAuth = FirebaseAuth.getInstance();
         fstore = FirebaseFirestore.getInstance();
 
-        if(fAuth.getCurrentUser()!= null){
+        if (fAuth.getCurrentUser() != null) {
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
         }
-
-
 
 
         // ALREADY ACCOUNT PLEASE LOGIN LOGIC
@@ -77,7 +74,7 @@ public  static  final String TAG = "TAG";
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),Login.class));
+                startActivity(new Intent(getApplicationContext(), Login.class));
             }
         });
 
@@ -87,25 +84,25 @@ public  static  final String TAG = "TAG";
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String  email = mEmail.getText().toString().trim();
+                final String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
-                final  String  fullName = mFullName.getText().toString().trim();
-                final  String phone = mPhone.getText().toString().trim();
+                final String fullName = mFullName.getText().toString().trim();
+                final String phone = mPhone.getText().toString().trim();
 
 
-                if(TextUtils.isEmpty(email)){
+                if (TextUtils.isEmpty(email)) {
                     mEmail.setError("Email Is Required");
                     return;
 
                 }
 
-                if(TextUtils.isEmpty(password)) {
+                if (TextUtils.isEmpty(password)) {
                     mPassword.setError("Password Is Required");
 
                     return;
                 }
 
-                if(password.length()<6){
+                if (password.length() < 6) {
                     mPassword.setError("Password Must Be >= 6 character");
                     return;
                 }
@@ -113,14 +110,12 @@ public  static  final String TAG = "TAG";
                 progressBar.setVisibility(View.VISIBLE);
 
 
-
-
-                fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
-                        if(task.isSuccessful()){
-                            FirebaseUser fuser  = fAuth.getCurrentUser();
+                        if (task.isSuccessful()) {
+                            FirebaseUser fuser = fAuth.getCurrentUser();
                             fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
@@ -129,41 +124,39 @@ public  static  final String TAG = "TAG";
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Log.d(TAG,"OnFailure: Email Not Sent"+ e.getMessage());
+                                    Log.d(TAG, "OnFailure: Email Not Sent" + e.getMessage());
                                 }
                             });
 
                             Toast.makeText(getApplicationContext(), "User Created", Toast.LENGTH_SHORT).show();
                             userID = fAuth.getCurrentUser().getUid();
                             DocumentReference documentReference = fstore.collection("user").document(userID);
-                            Map<String,Object> user = new HashMap<>();
+                            Map<String, Object> user = new HashMap<>();
                             user.put("fName", fullName);
-                            user.put("email",email);
-                            user.put("phone",phone);
+                            user.put("email", email);
+                            user.put("phone", phone);
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
-                                    Log.d(TAG,"onSuccess: User Profile Is Created" + userID);
+                                    Log.d(TAG, "onSuccess: User Profile Is Created" + userID);
 
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Log.d(TAG,"onFailure:" + e.toString());
+                                    Log.d(TAG, "onFailure:" + e.toString());
                                 }
                             });
 
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        }
-                        else{
-                            Toast.makeText(Register.this, "ERROR" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        } else {
+                            Toast.makeText(Register.this, "ERROR" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
                         }
 
                     }
                 });
             }
-
 
 
         });
