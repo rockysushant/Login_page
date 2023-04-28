@@ -13,4 +13,28 @@
         <item name="android:statusBarColor" tools:targetApi="21">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+
+<!--    Light Mode-->
+
+<!--    SCRREN BACKGROUND IN LIGHT MODE-->
+
+
+
+    <style name="SCREEN">
+        <item name="android:background">#FFF</item>
+    </style>
+
+<!--    TEXT  BACKGROUND IN LIGHT MODE-->
+
+
+    <style name="text">
+        <item name="android:textColor">#000</item>
+    </style>
+
+
+
+
+
+
 </resources>

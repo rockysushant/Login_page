@@ -23,10 +23,7 @@ import com.example.login.Fragments.NotificationFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-
     BottomNavigationView bnView;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,31 +37,31 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
 
-                if(id==R.id.nav_home){
-                    loadFrag(new HomeFragment(),false);
+                if (id == R.id.nav_home) {
+                    loadFrag(new HomeFragment(), false);
 //                    getSupportActionBar().hide();
 
 
-                }else if(id==R.id.nav_categories){
+                } else if (id == R.id.nav_categories) {
 
-                    loadFrag(new CategoriesFragment(),false);
+                    loadFrag(new CategoriesFragment(), false);
 //                    getSupportActionBar().show();
 //                    getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.black)));
 //                    getSupportActionBar().setTitle(" All Categories");
 
 
-                }else if(id==R.id.nav_notification){
-                    loadFrag(new NotificationFragment(),false);
+                } else if (id == R.id.nav_notification) {
+                    loadFrag(new NotificationFragment(), false);
 //                    getSupportActionBar().show();
 //                    getSupportActionBar().setTitle("Notification");
 
-                }else if(id==R.id.nav_cart){
-                    loadFrag(new CartFragment(),false);
+                } else if (id == R.id.nav_cart) {
+                    loadFrag(new CartFragment(), false);
 //                    getSupportActionBar().show();
 //                    getSupportActionBar().setTitle("Cart");
 
-                }else if(id==R.id.nav_account){
-                    loadFrag( new AccountFragment(),false);
+                } else if (id == R.id.nav_account) {
+                    loadFrag(new AccountFragment(), false);
 //                    getSupportActionBar().show();
 //                    getSupportActionBar().setTitle("Account");
 
@@ -80,19 +77,28 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
     @SuppressLint("SuspiciousIndentation")
-    public void loadFrag(Fragment fragment, boolean flag){
+    public void loadFrag(Fragment fragment, boolean flag) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        if(flag) {
+        if (flag) {
             ft.add(R.id.container, fragment);
             fm.popBackStack();
-        }else
-            ft.replace(R.id.container,fragment);
+        } else
+            ft.replace(R.id.container, fragment);
         ft.addToBackStack(null);
         ft.commit();
 
+
     }
+
+
+
+
+
+
 
 
 }

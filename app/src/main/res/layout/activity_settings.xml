@@ -1,11 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/SCREEN"
+    tools:context=".Settings.settings">
 
-    tools:context=".Fragments.AccountFragment">
 
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical">-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="Dark Mode"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:padding="10dp"-->
+<!--                android:textStyle="bold"-->
+<!--                style="@style/text"-->
+
+
+<!--                />-->
+
+
+<!--            <Switch-->
+<!--                android:id="@+id/switch"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:gravity="center"/>-->
+
+<!--        </LinearLayout>-->
+
+
+
+
+<!--    </LinearLayout>-->
 
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -177,10 +216,9 @@
             android:layout_marginLeft="70dp"/>
 
         <TextView
-            android:id="@+id/settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Settings"
+            android:text="settings"
             android:textSize="18sp"
             android:textColor="@color/black"
             android:layout_marginLeft="20dp"
@@ -189,7 +227,7 @@
 
     </LinearLayout>
 
-.
+    .
 
 
     <LinearLayout
@@ -221,10 +259,6 @@
             style="@style/text"/>
 
     </LinearLayout>
-
-
-
-
 
 
 
