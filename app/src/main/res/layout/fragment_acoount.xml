@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="#EAE5E5"
     tools:context=".Fragments.AccountFragment">
 
 
@@ -144,7 +144,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="36dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="60dp"
             android:src="@drawable/baseline_location_on_24" />
 
         <TextView

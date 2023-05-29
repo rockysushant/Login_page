@@ -42,25 +42,29 @@ public class MainActivity extends AppCompatActivity {
 //                    getSupportActionBar().hide();
 
 
-                } else if (id == R.id.nav_categories) {
-
-                    loadFrag(new CategoriesFragment(), false);
+                }
+//                else if (id == R.id.nav_categories) {
+//
+//                    loadFrag(new CategoriesFragment(), false);
 //                    getSupportActionBar().show();
 //                    getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.black)));
 //                    getSupportActionBar().setTitle(" All Categories");
 
 
-                } else if (id == R.id.nav_notification) {
+//                }
+                else if (id == R.id.nav_notification) {
                     loadFrag(new NotificationFragment(), false);
 //                    getSupportActionBar().show();
 //                    getSupportActionBar().setTitle("Notification");
 
-                } else if (id == R.id.nav_cart) {
-                    loadFrag(new CartFragment(), false);
-//                    getSupportActionBar().show();
-//                    getSupportActionBar().setTitle("Cart");
+                }
+//                else if (id == R.id.nav_cart) {
+//                    loadFrag(new CartFragment(), false);
+////                    getSupportActionBar().show();
+////                    getSupportActionBar().setTitle("Cart");
 
-                } else if (id == R.id.nav_account) {
+//                }
+                else if (id == R.id.nav_account) {
                     loadFrag(new AccountFragment(), false);
 //                    getSupportActionBar().show();
 //                    getSupportActionBar().setTitle("Account");
