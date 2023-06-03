@@ -2,15 +2,20 @@ package com.example.login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,12 +27,25 @@ import com.example.login.Fragments.HomeFragment;
 import com.example.login.Fragments.NotificationFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bnView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        // UPPER ACTION BAR(40,41)
+
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
         setContentView(R.layout.activity_main);
+//        getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,R.color.colorAccent));
+
 
 
         bnView = findViewById(R.id.bnView);
@@ -40,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 if (id == R.id.nav_home) {
                     loadFrag(new HomeFragment(), false);
 //                    getSupportActionBar().hide();
+//                    getSupportActionBar().setTitle(" Home");
 
 
                 }
@@ -99,10 +118,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.logoutmenu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.logout:
+                logoutUser();
+                break;
 
 
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void logoutUser() {
 
 
-
-
+    }
 }
